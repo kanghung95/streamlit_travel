@@ -1,21 +1,29 @@
 import streamlit as st
 from home import journey_home
-from mobile import journey_mobile
+from Total import journey_Total
+from ml import journey_ml
+
+import platform
+import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
+plt.rcParams['axes.unicode_minus'] = False
+if platform.system() == 'Linux':
+    rc('font', family='NanumGothic')
 
 def main() :
-    st.title('국내여행 검색 1순위')
-    st.subheader('모바일과 PC에서 뽑은 날짜별 국내여행지 1순위를 예측합니다')
+    st.title('날짜별 국내여행 순위를 알아보자')
 
-    menu = ['Home', 'Mobile', 'PC', 'Total']
+    menu = ['Home', 'Total', 'ML']
 
     choice = st.sidebar.selectbox('메뉴', menu)
 
     if choice == menu[0] :
         journey_home()
     elif choice == menu[1] :
-        journey_mobile()
+        journey_Total()
     elif choice == menu[2] :
-        pass
+        journey_ml()
+        
 
 if __name__ == '__main__' :
     main()
