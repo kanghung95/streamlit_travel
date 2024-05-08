@@ -11,9 +11,8 @@ if platform.system() == 'Linux':
     rc('font', family='NanumGothic')
 
 def main() :
-    st.title('날짜별 국내여행 순위를 알아보자')
 
-    menu = ['Home', 'Total', 'ML']
+    menu = ['메인화면', '통합 및 개별순위', '인기여행지']
 
     choice = st.sidebar.selectbox('메뉴', menu)
 
