@@ -38,6 +38,9 @@ def journey_ml():
         selected_date_str = selected_date.strftime('%Y-%m-%d')
         recommended_city = np.random.choice(cities)  # 랜덤으로 추천 도시 선택
         st.text(f"{selected_date_str} 예상으로는 {city}보다는 {recommended_city}을(를) 추천드립니다!")
+    
+        if recommended_city == city :
+            st.write(f"저도 {city}를 추천합니다!")
         
         if recommended_city == '부산':
             st.image('./image/부산.jpg', caption='부산의 아름다운 풍경', use_column_width=True)
