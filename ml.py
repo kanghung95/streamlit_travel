@@ -11,8 +11,6 @@ def select_date_range():
     return selected_date
 
 def journey_ml():
-    recommended_city = None  # 변수를 미리 선언하고 None으로 초기화
-    
     st.subheader('5월부터의 추천지역 확인해보기')
     st.text('날짜와 여행지를 선택하면 지역을 추천해드려요!')
 
@@ -35,8 +33,10 @@ def journey_ml():
         new_data = np.array(encoded_city[:5]).reshape(1, -1)
         city_travel = travel.predict(new_data)
         
+        recommended_city_index = np.argmax(city_travel)
+        recommended_city = cities[recommended_city_index]
+
         selected_date_str = selected_date.strftime('%Y-%m-%d')
-        recommended_city = np.random.choice(cities)  # 랜덤으로 추천 도시 선택
         st.text(f"{selected_date_str} 예상으로는 {city}보다는 {recommended_city}을(를) 추천드립니다!")
     
         if recommended_city == city :
